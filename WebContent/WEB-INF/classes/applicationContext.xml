@@ -3,6 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
+	<!-- 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName">
 			<value>com.mysql.jdbc.Driver</value>
@@ -13,8 +14,19 @@
 		<property name="username" value="root"></property>
 		<property name="password" value="19941014"></property>
 	</bean>
+	
+	 -->
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url" value="jdbc:mysql://localhost/management"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="19941014"></property>
+	</bean>
 
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource">
 			<ref bean="dataSource"/>
 		</property>
@@ -28,14 +40,18 @@
 		
 		<property name="mappingResources">
 			<list>
-				<value>com/integration.entity/User.hbm.xml</value>
+				<value>com/integration/entity/User.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
 	
+	<bean id="userDAO" class="com.integration.dao.impl.UserDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
 	<bean id="userService" class="com.integration.service.impl.UserServiceImpl">
 		<property name="userDAO" ref="userDAO"></property>
-	</bean>
+	</bean>																				
 	
 	<bean id="loginAction" class="com.integration.action.LoginAction">
 		<property name="userService" ref="userService"></property>
