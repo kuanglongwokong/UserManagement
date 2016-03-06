@@ -31,10 +31,11 @@
 				<value>com/integration.entity/User.hbm.xml</value>
 			</list>
 		</property>
-		
 	</bean>
 	
-	
+	<bean id="userService" class="com.integration.service.impl.UserServiceImpl">
+		<property name="userDAO" ref="userDAO"></property>
+	</bean>
 	
 	
 	
