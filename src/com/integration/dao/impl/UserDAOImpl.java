@@ -2,6 +2,7 @@ package com.integration.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import com.integration.dao.UserDAO;
@@ -12,38 +13,41 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 	//添加用户
 	@Override
 	public void save(User user) {
-		// TODO Auto-generated method stub
+		this.getHibernateTemplate().save(user);
 
 	}
 	//按用户名查找用户
 	@Override
 	public User getUser(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		String hsql = "from User u where u.name='"+ name +"'";
+		User result = (User) ((Query)this.getHibernateTemplate().find(hsql)).uniqueResult();
+		return result;
 	}
 	//删除用户
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		this.getHibernateTemplate().delete(findById(id));
 
 	}
 	//更新用户
 	@Override
 	public void update(User user) {
-		// TODO Auto-generated method stub
+		this.getHibernateTemplate().update(user);
 
 	}
 	//按id查找用户
 	@Override
 	public User findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		User user = (User)this.getHibernateTemplate().get(User.class, id);
+		
+		return user;
 	}
 	//查找全部用户
 	@Override
 	public List<User> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String queryString = "from User";
+		List<User> list = (List<User>) this.getHibernateTemplate().find(queryString);
+		return list;
 	}
 
 }
