@@ -37,7 +37,9 @@
 		<property name="userDAO" ref="userDAO"></property>
 	</bean>
 	
-	
+	<bean id="loginAction" class="com.integration.action.LoginAction">
+		<property name="userService" ref="userService"></property>
+	</bean>
 	
 	
 </beans>
