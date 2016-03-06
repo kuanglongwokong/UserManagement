@@ -54,8 +54,7 @@ public class UserServiceImpl implements UserService {
 	//查找全部用户
 	@Override
 	public List<User> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return userDAO.findAll();
 	}
 
 }
