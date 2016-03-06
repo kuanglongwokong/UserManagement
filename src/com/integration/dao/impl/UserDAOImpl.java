@@ -3,7 +3,7 @@ package com.integration.dao.impl;
 import java.util.List;
 
 import org.hibernate.Query;
-import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.integration.dao.UserDAO;
 import com.integration.entity.User;
