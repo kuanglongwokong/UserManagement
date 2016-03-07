@@ -23,5 +23,9 @@
 			<result name="success" type="redirect">/userquery.action</result>
 		</action>
 		
+		<action name="userupdate" class="userUpdateAction">
+			<result name="success" type="redirect">/userquery.action</result>
+			<result name="input">/update.jsp</result>
+		</action>
 	</package>
 </struts>    
