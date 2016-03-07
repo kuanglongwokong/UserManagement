@@ -14,7 +14,10 @@
 		<action name="userquery" class="userQueryAction">
 			<result name="success">/query.jsp</result>
 		</action>
-		
+			
+		<action name="user" class="userAction">
+			<result name="success" type="redirect">/userquery.action</result>
+		</action>
 		
 	</package>
 </struts>    
