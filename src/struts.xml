@@ -19,5 +19,9 @@
 			<result name="success" type="redirect">/userquery.action</result>
 		</action>
 		
+		<action name="userdelete" class="userDeleteAction">
+			<result name="success" type="redirect">/userquery.action</result>
+		</action>
+		
 	</package>
 </struts>    
